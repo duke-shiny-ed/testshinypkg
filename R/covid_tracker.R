@@ -7,10 +7,10 @@
 covid_tracker <- function(){
 
  # require(shiny)
-  #   require(shiny)
+    require(shiny)
 
   #load packages
- library(shiny)
+# library(shiny)
   library(shinythemes)
   library(tidyverse)
 # library(lubridate)
@@ -87,7 +87,7 @@ covid_tracker <- function(){
         pivot_longer(cols = c(-FIPS, -Province_State),
                      names_to = "date",
                      values_to = "total_cases") %>%
-        mutate(date = mdy(date)) %>%
+        mutate(date = lubridate::mdy(date)) %>%
         group_by(Province_State, FIPS) %>%
         mutate(new_cases = total_cases - lag(total_cases, n = 1),
                change_new_cases = new_cases - lag(new_cases, n = 1)) %>%
@@ -99,8 +99,8 @@ covid_tracker <- function(){
 
     covid_state_range <- reactive({
       covid_long() %>%
-        filter(date >= as_date(input$date[1]) &
-                 date <= as_date(input$date[2]))
+        filter(date >= lubridate::as_date(input$date[1]) &
+                 date <= lubridate::as_date(input$date[2]))
     })
 
     ## make daily plot
