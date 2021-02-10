@@ -23,3 +23,5 @@ Imports:
     ggthemes
 Depends: 
     tidyverse
+URL: https://github.com/duke-shiny-ed/testshinypkg
+BugReports: https://github.com/duke-shiny-ed/testshinypkg/issues
