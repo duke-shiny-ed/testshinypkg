@@ -1,0 +1,25 @@
+Package: testshinypkg
+Title: My cool test package
+Version: 0.0.0.9000
+Authors@R:
+    person("Jane", "Doe", email = "jane@example.com", role = c("aut", "cre"))
+Description: Factors have driven people to extreme measures, like ordering
+    custom conference ribbons and laptop stickers to express how HELLNO we
+    feel about stringsAsFactors. And yet, sometimes you need them. Can they
+    be made less maddening? Let's find out.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    forcats,
+    shiny,
+    shinythemes,
+    lubridate,
+    zoo,
+    tidyr,
+    glue,
+    ggthemes
+Depends: 
+    tidyverse
