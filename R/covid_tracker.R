@@ -73,7 +73,11 @@ covid_tracker <- function(){
         # uiOutput(outputId = "cdcmessage")
         #span(textOutput(outputId = "cdcmessage"), style = "color:blue", align = "center")
         br(),
-        textOutput("value")
+        textOutput("value"),
+        br(),
+
+        htmlOutput("kabletable")
+
       )
     )
   )
@@ -131,28 +135,17 @@ covid_tracker <- function(){
       text_reactive()
     })
 
-
-
-    ## Figure out if 14-day trend criteria is met
-    # trend_table <- reactive({
-    #     covid_long() %>%
-    #         filter(date >= (as_date(input$date[2]) - days(13)) & date <= as_date(input$date[2]))
-    # })
-    #
-    # output$cdcmessage <- renderUI({
-    #     criteria_met <- trend_table() %>%
-    #         group_by(Province_State) %>%
-    #         summarise(mean_cases = mean(change_new_cases)) %>%
-    #         mutate(message = if_else(mean_cases < 0, paste0("can open! ", emo::ji("white_check_mark")),
-    #                                  paste0("should stick with stay at home! ",
-    #                                         emo::ji("stop_sign"))))
-    #
-    #     HTML(paste(criteria_met$Province_State, criteria_met$message, "<br>"))
-    # })
-
+    output$kabletable <- renderText({
+     mtcars %>%
+       summarise(mean = mean(mpg), sd = sd(mpg)) %>%
+       knitr::kable(format = "html") %>%
+      kableExtra::kable_styling("striped", full_width = F)
+     })
   }
 
   # Run the application
   shinyApp(ui = ui, server = server)
 
 }
+
+

@@ -20,7 +20,9 @@ Imports:
     zoo,
     tidyr,
     glue,
-    ggthemes
+    ggthemes,
+    knitr,
+    kableExtra
 Depends: 
     tidyverse
 URL: https://github.com/duke-shiny-ed/testshinypkg
